@@ -1,0 +1,31 @@
+body {
+    font-family: Arial;
+    background: #eef2ff;
+}
+
+.container {
+    width: 600px;
+    margin: 50px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.buttons button {
+    margin: 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#result {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.note {
+    font-size: 12px;
+    color: gray;
+    margin-top: 20px;
+}

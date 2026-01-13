@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Chăm sóc cảm xúc</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="container">
+    <h1>💙 Bạn đang cảm thấy thế nào?</h1>
+
+    <div class="buttons">
+        <button onclick="selectEmotion('vui')">😊 Vui</button>
+        <button onclick="selectEmotion('buon')">😢 Buồn</button>
+        <button onclick="selectEmotion('tuc_gian')">😡 Tức giận</button>
+        <button onclick="selectEmotion('lo_lang')">😟 Lo lắng</button>
+        <button onclick="selectEmotion('cang_thang')">😣 Căng thẳng</button>
+    </div>
+
+    <div id="result"></div>
+
+    <p class="note">
+        ⚠️ Nội dung mang tính tham khảo, không thay thế chuyên gia tâm lý.
+    </p>
+</div>
+
+<script>
+function selectEmotion(emotion) {
+    fetch("/emotion", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ emotion: emotion })
+    })
+    .then(res => res.json())
+    .then(data => {
+        let html = "<h3>Biện pháp cải thiện:</h3><ul>";
+        data.solutions.forEach(item => {
+            html += `<li>${item}</li>`;
+        });
+        html += "</ul>";
+        document.getElementById("result").innerHTML = html;
+    });
+}
+</script>
+</body>
+</html>
